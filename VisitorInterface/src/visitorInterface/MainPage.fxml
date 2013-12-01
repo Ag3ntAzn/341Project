@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="visitorInterface.MainPageController">
+  <children>
+    <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <children>
+        <Button layoutX="321.0" layoutY="59.0" mnemonicParsing="false" onAction="#goToAnimalLocationScreen" prefHeight="83.0" prefWidth="158.0" text="Find Animal Location" />
+      </children>
+    </AnchorPane>
+    <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <children>
+        <Button layoutX="321.0" layoutY="59.0" mnemonicParsing="false" onAction="#goToMembershipFeeScreen" prefHeight="83.0" prefWidth="158.0" text="Find Membership Costs" />
+      </children>
+    </AnchorPane>
+    <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <children>
+        <Button layoutX="321.0" layoutY="59.0" mnemonicParsing="false" onAction="#goToMembersLoginScreen" prefHeight="83.0" prefWidth="158.0" text="Members Account" />
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>
