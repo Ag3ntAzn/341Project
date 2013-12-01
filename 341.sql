@@ -10,10 +10,28 @@ Target Server Type    : MYSQL
 Target Server Version : 50614
 File Encoding         : 65001
 
-Date: 2013-11-29 23:27:59
+Date: 2013-12-01 12:29:09
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for accounts
+-- ----------------------------
+DROP TABLE IF EXISTS `accounts`;
+CREATE TABLE `accounts` (
+  `Integer` int(15) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  PRIMARY KEY (`Integer`),
+  CONSTRAINT `Integer` FOREIGN KEY (`Integer`) REFERENCES `members` (`memberID`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of accounts
+-- ----------------------------
+INSERT INTO `accounts` VALUES ('1', 'Hello', 'World');
+INSERT INTO `accounts` VALUES ('2', 'password', 'username');
 
 -- ----------------------------
 -- Table structure for animals
@@ -24,7 +42,7 @@ CREATE TABLE `animals` (
   `name` varchar(25) NOT NULL,
   `DOB` date NOT NULL,
   `gender` enum('Male','Female') NOT NULL,
-  `date_acquired` datetime NOT NULL,
+  `date_acquired` date NOT NULL,
   PRIMARY KEY (`species`,`name`),
   KEY `species` (`species`) USING HASH,
   KEY `name` (`name`) USING HASH,
@@ -35,6 +53,38 @@ CREATE TABLE `animals` (
 -- ----------------------------
 -- Records of animals
 -- ----------------------------
+INSERT INTO `animals` VALUES ('Bat', 'Betty', '2010-05-13', 'Female', '2013-04-25');
+INSERT INTO `animals` VALUES ('Bat', 'Mike', '2010-04-12', 'Male', '2013-04-25');
+INSERT INTO `animals` VALUES ('Bear', 'Alfred', '2000-03-03', 'Male', '2013-04-13');
+INSERT INTO `animals` VALUES ('Bear', 'Jess', '2004-03-12', 'Female', '2013-03-12');
+INSERT INTO `animals` VALUES ('Butterfly', 'Daniel', '2007-02-17', 'Male', '2008-01-01');
+INSERT INTO `animals` VALUES ('Butterfly', 'Mia', '2008-12-04', 'Female', '2008-12-05');
+INSERT INTO `animals` VALUES ('Crab', 'Ava', '2008-02-18', 'Female', '2009-02-04');
+INSERT INTO `animals` VALUES ('Crab', 'Crabby', '2009-04-08', 'Male', '2009-05-12');
+INSERT INTO `animals` VALUES ('Crocodile', 'Crocy', '1999-02-03', 'Male', '2013-02-09');
+INSERT INTO `animals` VALUES ('Crocodile', 'Holly', '1999-03-04', 'Female', '2013-02-09');
+INSERT INTO `animals` VALUES ('Duck', 'Grace', '2012-04-08', 'Female', '2013-08-06');
+INSERT INTO `animals` VALUES ('Duck', 'Quacky', '2012-04-15', 'Male', '2013-09-22');
+INSERT INTO `animals` VALUES ('Eel', 'Charlie', '2001-09-13', 'Male', '2010-11-19');
+INSERT INTO `animals` VALUES ('Eel', 'Sophie', '2001-03-12', 'Female', '2010-11-19');
+INSERT INTO `animals` VALUES ('Elephant', 'James', '2000-01-01', 'Male', '2013-05-12');
+INSERT INTO `animals` VALUES ('Elephant', 'Lauren', '2000-02-02', 'Female', '2013-05-12');
+INSERT INTO `animals` VALUES ('Frog', 'Harry', '2011-04-15', 'Male', '2013-07-10');
+INSERT INTO `animals` VALUES ('Frog', 'Lily', '2011-08-21', 'Female', '2012-09-18');
+INSERT INTO `animals` VALUES ('Hawk', 'Evie', '2010-03-01', 'Female', '2013-09-02');
+INSERT INTO `animals` VALUES ('Hawk', 'Thomas', '2009-03-02', 'Male', '2013-09-09');
+INSERT INTO `animals` VALUES ('Lizard', 'Harry', '2008-11-02', 'Male', '2013-03-02');
+INSERT INTO `animals` VALUES ('Lizard', 'Jess', '2010-02-04', 'Female', '2013-02-03');
+INSERT INTO `animals` VALUES ('Owl', 'Amelia', '2008-03-12', 'Female', '2010-11-04');
+INSERT INTO `animals` VALUES ('Owl', 'Joshua', '2005-02-13', 'Male', '2010-09-08');
+INSERT INTO `animals` VALUES ('Salamander', 'Oliver', '2011-02-11', 'Male', '2012-06-10');
+INSERT INTO `animals` VALUES ('Salamander', 'Ruby', '2011-02-12', 'Female', '2012-06-10');
+INSERT INTO `animals` VALUES ('Scorpion', 'Ella', '2008-11-02', 'Female', '2010-02-04');
+INSERT INTO `animals` VALUES ('Scorpion', 'James', '2003-12-05', 'Male', '2005-03-04');
+INSERT INTO `animals` VALUES ('Turtle', 'Mia', '1895-02-01', 'Female', '2010-03-04');
+INSERT INTO `animals` VALUES ('Turtle', 'Torty', '1940-01-02', 'Male', '2010-02-03');
+INSERT INTO `animals` VALUES ('Whale', 'Jack', '1995-02-12', 'Male', '2010-02-15');
+INSERT INTO `animals` VALUES ('Whale', 'Olivia', '1992-03-23', 'Female', '2010-01-13');
 
 -- ----------------------------
 -- Table structure for employees
@@ -60,7 +110,11 @@ CREATE TABLE `employees` (
 -- Records of employees
 -- ----------------------------
 INSERT INTO `employees` VALUES ('111111111', 'Bob', 'Goodman', '123 Zoo Road', '43000', '1967-03-04', '1999-12-11', '0', '5');
+INSERT INTO `employees` VALUES ('123123123', 'Gordan', 'Freeman', '123 Z Street', '50000', '1945-11-22', '1999-09-02', '3', '2');
 INSERT INTO `employees` VALUES ('123456789', 'James', 'Monroe', '123 East Street', '13000', '1945-11-11', '2013-11-11', '3', '28');
+INSERT INTO `employees` VALUES ('222222222', 'Booker', 'DeWitt', '123 Cloud Ave', '100000', '1910-11-12', '2000-09-09', '4', '4');
+INSERT INTO `employees` VALUES ('333333333', 'Zachary', 'Comstock', '444 Sky Lane', '200000', '1950-10-02', '1999-09-05', '5', '2');
+INSERT INTO `employees` VALUES ('444444444', 'MJ', 'Harkins', '999 Cleveland Street', '1000000', '1992-11-30', '2013-04-04', '0', '100');
 
 -- ----------------------------
 -- Table structure for habitatmanagers
@@ -79,6 +133,11 @@ CREATE TABLE `habitatmanagers` (
 -- ----------------------------
 -- Records of habitatmanagers
 -- ----------------------------
+INSERT INTO `habitatmanagers` VALUES ('Amphibians', '111111111', '2013-12-01');
+INSERT INTO `habitatmanagers` VALUES ('Arthropod', '111111111', '2013-12-01');
+INSERT INTO `habitatmanagers` VALUES ('Bird', '111111111', '2013-12-01');
+INSERT INTO `habitatmanagers` VALUES ('Mammal', '222222222', '2013-12-01');
+INSERT INTO `habitatmanagers` VALUES ('Reptile', '333333333', '2013-12-01');
 
 -- ----------------------------
 -- Table structure for habitats
@@ -95,6 +154,9 @@ CREATE TABLE `habitats` (
 -- ----------------------------
 -- Records of habitats
 -- ----------------------------
+INSERT INTO `habitats` VALUES ('Amphibians', '25', '35', '10');
+INSERT INTO `habitats` VALUES ('Arthropod', '15', '35', '5');
+INSERT INTO `habitats` VALUES ('Bird', '40', '90', '10');
 INSERT INTO `habitats` VALUES ('Mammal', '15', '30', '5');
 INSERT INTO `habitats` VALUES ('Reptile', '30', '45', '10');
 
@@ -111,12 +173,44 @@ CREATE TABLE `livesin` (
   KEY `penID` (`penID`) USING HASH,
   CONSTRAINT `name` FOREIGN KEY (`name`) REFERENCES `animals` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `penID` FOREIGN KEY (`penID`) REFERENCES `pens` (`penID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `species` FOREIGN KEY (`species`) REFERENCES `animals` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `species` FOREIGN KEY (`species`) REFERENCES `animals` (`species`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of livesin
 -- ----------------------------
+INSERT INTO `livesin` VALUES ('Crocodile', 'Crocy', '1');
+INSERT INTO `livesin` VALUES ('Crocodile', 'Holly', '1');
+INSERT INTO `livesin` VALUES ('Turtle', 'Mia', '2');
+INSERT INTO `livesin` VALUES ('Turtle', 'Torty', '2');
+INSERT INTO `livesin` VALUES ('Whale', 'Jack', '3');
+INSERT INTO `livesin` VALUES ('Whale', 'Olivia', '3');
+INSERT INTO `livesin` VALUES ('Elephant', 'James', '4');
+INSERT INTO `livesin` VALUES ('Elephant', 'Lauren', '4');
+INSERT INTO `livesin` VALUES ('Bear', 'Alfred', '5');
+INSERT INTO `livesin` VALUES ('Bear', 'Jess', '5');
+INSERT INTO `livesin` VALUES ('Bat', 'Betty', '6');
+INSERT INTO `livesin` VALUES ('Bat', 'Mike', '6');
+INSERT INTO `livesin` VALUES ('Salamander', 'Oliver', '7');
+INSERT INTO `livesin` VALUES ('Salamander', 'Ruby', '7');
+INSERT INTO `livesin` VALUES ('Frog', 'Harry', '8');
+INSERT INTO `livesin` VALUES ('Frog', 'Lily', '8');
+INSERT INTO `livesin` VALUES ('Eel', 'Charlie', '9');
+INSERT INTO `livesin` VALUES ('Eel', 'Sophie', '9');
+INSERT INTO `livesin` VALUES ('Duck', 'Grace', '10');
+INSERT INTO `livesin` VALUES ('Duck', 'Quacky', '10');
+INSERT INTO `livesin` VALUES ('Hawk', 'Evie', '11');
+INSERT INTO `livesin` VALUES ('Hawk', 'Thomas', '11');
+INSERT INTO `livesin` VALUES ('Owl', 'Amelia', '12');
+INSERT INTO `livesin` VALUES ('Owl', 'Joshua', '12');
+INSERT INTO `livesin` VALUES ('Butterfly', 'Daniel', '13');
+INSERT INTO `livesin` VALUES ('Butterfly', 'Mia', '13');
+INSERT INTO `livesin` VALUES ('Scorpion', 'Ella', '14');
+INSERT INTO `livesin` VALUES ('Scorpion', 'James', '14');
+INSERT INTO `livesin` VALUES ('Crab', 'Ava', '15');
+INSERT INTO `livesin` VALUES ('Crab', 'Crabby', '15');
+INSERT INTO `livesin` VALUES ('Lizard', 'Harry', '16');
+INSERT INTO `livesin` VALUES ('Lizard', 'Jess', '16');
 
 -- ----------------------------
 -- Table structure for locations
@@ -131,7 +225,20 @@ CREATE TABLE `locations` (
 -- ----------------------------
 -- Records of locations
 -- ----------------------------
+INSERT INTO `locations` VALUES ('Bat', 'M4');
+INSERT INTO `locations` VALUES ('Bear', 'M3');
+INSERT INTO `locations` VALUES ('Butterfly', 'AR1');
+INSERT INTO `locations` VALUES ('Crab', 'AR3');
 INSERT INTO `locations` VALUES ('Crocs', 'R1');
+INSERT INTO `locations` VALUES ('Duck', 'B1');
+INSERT INTO `locations` VALUES ('Eel', 'AM3');
+INSERT INTO `locations` VALUES ('Elephants', 'M2');
+INSERT INTO `locations` VALUES ('Frog', 'AM2');
+INSERT INTO `locations` VALUES ('Hawk', 'B2');
+INSERT INTO `locations` VALUES ('Lizard', 'R3');
+INSERT INTO `locations` VALUES ('Owl', 'B3');
+INSERT INTO `locations` VALUES ('Salamander', 'AM1');
+INSERT INTO `locations` VALUES ('Scorpion', 'AR2');
 INSERT INTO `locations` VALUES ('Turtles', 'R2');
 INSERT INTO `locations` VALUES ('Whales', 'M1');
 
@@ -221,6 +328,20 @@ CREATE TABLE `penkeepers` (
 -- ----------------------------
 INSERT INTO `penkeepers` VALUES ('1', '123456789', '2013-11-26');
 INSERT INTO `penkeepers` VALUES ('2', '123456789', '2013-11-26');
+INSERT INTO `penkeepers` VALUES ('3', '111111111', '2011-01-01');
+INSERT INTO `penkeepers` VALUES ('4', '111111111', '2011-01-01');
+INSERT INTO `penkeepers` VALUES ('5', '111111111', '2011-01-01');
+INSERT INTO `penkeepers` VALUES ('6', '111111111', '2011-01-01');
+INSERT INTO `penkeepers` VALUES ('7', '123123123', '2011-11-11');
+INSERT INTO `penkeepers` VALUES ('8', '123123123', '2011-11-11');
+INSERT INTO `penkeepers` VALUES ('9', '123123123', '2013-03-03');
+INSERT INTO `penkeepers` VALUES ('10', '222222222', '2012-12-12');
+INSERT INTO `penkeepers` VALUES ('11', '222222222', '2012-12-12');
+INSERT INTO `penkeepers` VALUES ('12', '222222222', '2012-12-12');
+INSERT INTO `penkeepers` VALUES ('13', '333333333', '2012-10-10');
+INSERT INTO `penkeepers` VALUES ('14', '333333333', '2012-10-10');
+INSERT INTO `penkeepers` VALUES ('15', '333333333', '2012-10-10');
+INSERT INTO `penkeepers` VALUES ('16', '123456789', '2013-11-26');
 
 -- ----------------------------
 -- Table structure for pens
@@ -248,6 +369,19 @@ CREATE TABLE `pens` (
 INSERT INTO `pens` VALUES ('1', 'Crocs', 'Reptile', 'Rainy', 'Mice', '4', '2013-11-04');
 INSERT INTO `pens` VALUES ('2', 'Turtles', 'Reptile', 'Cold', 'Plants', '12', '2013-11-13');
 INSERT INTO `pens` VALUES ('3', 'Whales', 'Mammal', 'Water', 'Small Stuff', '20', '2013-11-15');
+INSERT INTO `pens` VALUES ('4', 'Elephants', 'Mammal', 'Grassy', 'Food', '9', '2013-11-11');
+INSERT INTO `pens` VALUES ('5', 'Bear', 'Mammal', 'Grass', 'Food', '5', '2013-11-11');
+INSERT INTO `pens` VALUES ('6', 'Bat', 'Mammal', 'Wet', 'Food', '9', '2013-11-11');
+INSERT INTO `pens` VALUES ('7', 'Salamander', 'Amphibians', 'Wet', 'Food', '5', '2013-11-11');
+INSERT INTO `pens` VALUES ('8', 'Frog', 'Amphibians', 'Wet', 'Food', '8', '2013-11-11');
+INSERT INTO `pens` VALUES ('9', 'Eel', 'Amphibians', 'Wet', 'Food', '9', '2013-11-11');
+INSERT INTO `pens` VALUES ('10', 'Duck', 'Bird', 'Warm', 'Food', '10', '2013-11-11');
+INSERT INTO `pens` VALUES ('11', 'Hawk', 'Bird', 'Warm', 'Food', '18', '2013-11-11');
+INSERT INTO `pens` VALUES ('12', 'Owl', 'Bird', 'Warm', 'Food', '10', '2013-11-11');
+INSERT INTO `pens` VALUES ('13', 'Butterfly', 'Arthropod', 'Warm', 'Worm', '15', '2013-11-11');
+INSERT INTO `pens` VALUES ('14', 'Scorpion', 'Arthropod', 'Warm', 'Insects', '8', '2013-11-11');
+INSERT INTO `pens` VALUES ('15', 'Crab', 'Arthropod', 'Warm', 'Stuff', '9', '2013-11-11');
+INSERT INTO `pens` VALUES ('16', 'Lizard', 'Reptile', 'Wet', 'Things', '9', '2013-11-11');
 
 -- ----------------------------
 -- Table structure for timesvisited
