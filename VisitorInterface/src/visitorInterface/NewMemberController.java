@@ -2,10 +2,14 @@ package visitorInterface;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.text.Text;
 
-public class MembershipFeeController implements Screen {
+public class NewMemberController implements Screen {
 	
 	ScreensController screenChanger;
+	
+	@FXML
+	private Text feeDisplay;
 
 	@Override
 	public void setScreenParent(ScreensController controller) {

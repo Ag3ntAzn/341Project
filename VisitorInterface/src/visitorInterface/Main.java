@@ -10,7 +10,7 @@ public class Main extends Application {
 	public static final String MAIN_SCREEN = "MainPage";
 	public static final String ANIMAL_SCREEN = "Animal";
 	public static final String MEMBERS_LOGIN_SCREEN = "MemberLogin";
-	public static final String MEMBERSHIP_FEE_SCREEN = "MembershipFee";
+	public static final String MEMBERSHIP_FEE_SCREEN = "NewMember";
 	
 	@Override
 	public void start(Stage primaryStage) {
