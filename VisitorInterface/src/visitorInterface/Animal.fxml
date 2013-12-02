@@ -1,16 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="visitorInterface.AnimalController">
   <children>
-    <Text layoutX="358.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Animal Screen">
-      <font>
-        <Font size="18.0" />
-      </font>
-    </Text>
+    <SplitPane dividerPositions="0.28929765886287623" focusTraversable="true" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <children>
+            <MenuButton id="menu" focusTraversable="true" layoutX="54.0" layoutY="14.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="165.0" text="Choose a habitat..." visible="true">
+              <font>
+                <Font size="14.0" fx:id="x1" />
+              </font>
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#populateSpecies" text="Hab 1" />
+                <MenuItem mnemonicParsing="false" onAction="#populateSpecies" text="Hab 2" visible="true" />
+              </items>
+            </MenuButton>
+            <ListView fx:id="speciesList" editable="false" layoutX="447.0" layoutY="14.0" orientation="VERTICAL" prefHeight="142.0" prefWidth="200.0" />
+            <Text font="$x1" layoutX="263.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose a species:" />
+            <Text layoutX="263.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CTRL+Click to select multiple species">
+              <font>
+                <Font size="10.0" />
+              </font>
+            </Text>
+            <Text fx:id="errorMsg" fill="RED" layoutX="219.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please select a species before searching." visible="false" />
+            <Button layoutX="667.0" layoutY="111.0" mnemonicParsing="false" onAction="#searchForAnimals" prefHeight="45.0" prefWidth="105.0" text="Search" />
+          </children>
+        </AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <children>
+            <ListView id="AnimalList" fx:id="animalList" prefHeight="381.0" prefWidth="798.0" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Button font="$x1" layoutX="698.0" layoutY="388.0" mnemonicParsing="false" onAction="#goToMainPage" prefHeight="30.0" prefWidth="95.0" text="Back" />
+          </children>
+        </AnchorPane>
+      </items>
+    </SplitPane>
   </children>
 </AnchorPane>
