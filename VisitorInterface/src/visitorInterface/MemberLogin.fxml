@@ -1,16 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="visitorInterface.MemberLoginController">
   <children>
-    <Text layoutX="389.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MemberLogin">
+    <Text layoutX="67.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign-in to your account">
       <font>
-        <Font size="18.0" />
+        <Font size="26.0" />
       </font>
     </Text>
+    <Label layoutX="239.0" layoutY="274.0" text="User Name:">
+      <font>
+        <Font size="16.0" fx:id="x1" />
+      </font>
+      <labelFor>
+        <TextField fx:id="username" layoutX="342.0" layoutY="267.0" onAction="#submitLogin" prefHeight="35.0" prefWidth="200.0" promptText="Username" />
+      </labelFor>
+    </Label>
+    <Label font="$x1" layoutX="250.0" layoutY="319.0" text="Password:">
+      <labelFor>
+        <PasswordField fx:id="password" layoutX="342.0" layoutY="312.0" onAction="#submitLogin" prefHeight="35.0" prefWidth="200.0" promptText="Password" text="" />
+      </labelFor>
+    </Label>
+    <fx:reference source="username" />
+    <fx:reference source="password" />
+    <Button fx:id="loginButton" cancelButton="false" defaultButton="false" disable="true" layoutX="476.0" layoutY="364.0" minHeight="22.0" mnemonicParsing="false" onAction="#submitLogin" prefHeight="34.999900000002526" prefWidth="66.0" text="Login">
+      <font>
+        <Font size="14.0" fx:id="x2" />
+      </font>
+    </Button>
+    <Button cancelButton="true" font="$x2" layoutX="664.0" layoutY="505.0" mnemonicParsing="false" onAction="#goToMain" prefHeight="35.0" prefWidth="66.0" text="Back" />
   </children>
 </AnchorPane>
