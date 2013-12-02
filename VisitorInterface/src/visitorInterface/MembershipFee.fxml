@@ -1,16 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="visitorInterface.MembershipFeeController">
   <children>
-    <Text layoutX="336.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MembershipFee">
+    <Label layoutX="69.0" layoutY="74.0" text="Habitat">
       <font>
-        <Font size="18.0" />
+        <Font size="14.0" fx:id="x1" />
+      </font>
+      <labelFor>
+        <MenuButton fx:id="habitat" layoutX="135.0" layoutY="75.0" mnemonicParsing="false" text="Choose a habitat...">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#getMembershipFee" text="Hab 1" />
+            <MenuItem mnemonicParsing="false" onAction="#getMembershipFee" text="Hab 2" />
+          </items>
+        </MenuButton>
+      </labelFor>
+    </Label>
+    <Label font="$x1" layoutX="325.0" layoutY="74.0" text="Fee:">
+      <labelFor>
+        <Text fx:id="feeDisplay" font="$x1" layoutX="394.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$0" />
+      </labelFor>
+    </Label>
+    <fx:reference source="feeDisplay" />
+    <Text layoutX="30.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Become a member:">
+      <font>
+        <Font size="26.0" />
       </font>
     </Text>
+    <TextField id="firstNameField" fx:id="firstName" layoutX="135.0" layoutY="150.0" prefHeight="30.0" prefWidth="239.0" />
+    <TextField id="lastNameField" fx:id="lastName" layoutX="473.0" layoutY="150.0" prefHeight="30.0" prefWidth="239.0" />
+    <TextField fx:id="address1" layoutX="135.0" layoutY="198.0" prefHeight="30.0" prefWidth="371.0" />
+    <Label font="$x1" labelFor="$firstName" layoutX="60.0" layoutY="156.0" text="First Name" />
+    <Label font="$x1" labelFor="$lastName" layoutX="394.0" layoutY="156.0" text="Last Name" />
+    <Label font="$x1" labelFor="$address1" layoutX="37.0" layoutY="204.0" text="Street Address" />
+    <TextField fx:id="address2" layoutX="135.0" layoutY="245.0" prefHeight="30.0" prefWidth="371.0" />
+    <Label font="$x1" labelFor="$address2" layoutX="25.0" layoutY="251.0" text="Street Address 2" />
+    <Label font="$x1" layoutX="103.0" layoutY="297.0" text="City">
+      <labelFor>
+        <TextField fx:id="city" layoutX="135.0" layoutY="291.0" prefHeight="30.0" prefWidth="176.0" />
+      </labelFor>
+    </Label>
+    <fx:reference source="city" />
+    <Label font="$x1" layoutX="325.0" layoutY="297.0" text="State">
+      <labelFor>
+        <MenuButton id="habitat" fx:id="state" layoutX="367.0" layoutY="291.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="--" />
+      </labelFor>
+    </Label>
+    <fx:reference source="state" />
+    <TextField fx:id="zipCode" layoutX="513.0" layoutY="291.0" prefHeight="30.0" prefWidth="90.0" />
+    <Label font="$x1" labelFor="$zipCode" layoutX="445.0" layoutY="297.0" text="ZipCode" />
+    <TextField fx:id="dob" layoutX="135.0" layoutY="334.0" prefHeight="30.0" prefWidth="90.0" promptText="mm/dd/yyyy" text="" />
+    <Label font="$x1" labelFor="$dob" layoutX="65.0" layoutY="340.0" text="Birth Date:" />
+    <Button layoutX="694.0" layoutY="543.0" mnemonicParsing="false" onAction="#goToMain" prefHeight="34.58203125" prefWidth="78.0" text="Back" />
+    <Button layoutX="653.0" layoutY="486.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="118.0" text="Submit">
+      <font>
+        <Font size="16.0" />
+      </font>
+    </Button>
+    <fx:reference source="habitat" />
   </children>
 </AnchorPane>
