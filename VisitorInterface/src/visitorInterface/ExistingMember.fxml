@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="city" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="visitorInterface.ExistingMemberController">
+  <children>
+    <Text layoutX="43.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome FirstName LastName">
+      <font>
+        <Font size="26.0" />
+      </font>
+    </Text>
+    <TextField fx:id="address1" layoutX="218.0" layoutY="110.0" prefHeight="30.0" prefWidth="371.0" />
+    <Label labelFor="$address1" layoutX="120.0" layoutY="116.0" text="Street Address">
+      <font>
+        <Font size="14.0" fx:id="x1" />
+      </font>
+    </Label>
+    <TextField fx:id="address2" layoutX="219.0" layoutY="148.0" prefHeight="30.0" prefWidth="371.0" />
+    <Label font="$x1" labelFor="$address2" layoutX="109.0" layoutY="154.0" text="Street Address 2" />
+    <Label font="$x1" layoutX="186.0" layoutY="194.0" text="City">
+      <labelFor>
+        <TextField fx:id="city" layoutX="218.0" layoutY="188.0" prefHeight="30.0" prefWidth="176.0" />
+      </labelFor>
+    </Label>
+    <fx:reference source="city" />
+    <Label font="$x1" layoutX="408.0" layoutY="194.0" text="State">
+      <labelFor>
+        <MenuButton id="habitat" fx:id="stateList" layoutX="450.0" layoutY="188.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="62.0" text="--" />
+      </labelFor>
+    </Label>
+    <fx:reference source="stateList" />
+    <TextField fx:id="zipCode" layoutX="596.0" layoutY="189.0" prefHeight="30.0" prefWidth="90.0" />
+    <Label font="$x1" labelFor="$zipCode" layoutX="528.0" layoutY="194.0" text="Zip Code" />
+    <TextField id="dob" fx:id="birthDate" layoutX="219.0" layoutY="227.0" prefHeight="30.0" prefWidth="90.0" promptText="mm/dd/yyyy" text="" />
+    <Label font="$x1" labelFor="$birthDate" layoutX="149.0" layoutY="233.0" text="Birth Date" />
+    <Separator prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="67.0" />
+    <Text layoutX="47.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update Information">
+      <font>
+        <Font size="20.0" fx:id="x2" />
+      </font>
+    </Text>
+    <Separator layoutX="-2.0" layoutY="283.0" prefWidth="800.0" />
+    <Text font="$x2" layoutX="47.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change Password" />
+    <Button layoutX="671.0" layoutY="244.0" mnemonicParsing="false" onAction="#updateMemberInformation" prefHeight="34.58203125" prefWidth="85.0" text="Submit" />
+    <Label font="$x1" layoutX="128.0" layoutY="345.0" text="Old Password">
+      <labelFor>
+        <PasswordField fx:id="oldPassword" layoutX="221.0" layoutY="340.0" prefHeight="30.0" prefWidth="219.0" />
+      </labelFor>
+    </Label>
+    <Label font="$x1" layoutX="122.0" layoutY="383.0" text="New Password">
+      <labelFor>
+        <PasswordField fx:id="newPassword" layoutX="221.0" layoutY="378.0" prefHeight="30.0" prefWidth="219.0" />
+      </labelFor>
+    </Label>
+    <Label font="$x1" layoutX="98.0" layoutY="424.0" text="Confirm Password">
+      <labelFor>
+        <PasswordField fx:id="confirmPassword" layoutX="221.0" layoutY="418.0" prefHeight="30.0" prefWidth="219.0" />
+      </labelFor>
+    </Label>
+    <fx:reference source="oldPassword" />
+    <fx:reference source="newPassword" />
+    <fx:reference source="confirmPassword" />
+    <Separator layoutX="0.0" layoutY="470.0" prefWidth="800.0" />
+    <Button layoutX="671.0" layoutY="426.0" mnemonicParsing="false" onAction="#changePassword" prefHeight="34.58203125" prefWidth="85.0" text="Submit" />
+    <Text font="$x2" layoutX="42.0" layoutY="509.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cancel Membership" />
+    <Button layoutX="707.0" layoutY="14.0" mnemonicParsing="false" onAction="#logOut" prefHeight="30.0" prefWidth="70.0" text="Log Out" />
+    <Button font="$x1" layoutX="222.0" layoutY="527.0" mnemonicParsing="false" onAction="#cancelMembership" prefHeight="48.0" prefWidth="112.0" text="Cancel" />
+  </children>
+</AnchorPane>

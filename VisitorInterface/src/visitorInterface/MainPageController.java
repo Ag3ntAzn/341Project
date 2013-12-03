@@ -8,6 +8,11 @@ public class MainPageController implements Screen {
 	ScreensController screenChanger;
 	
 	@Override
+	public void initializeScreen() {
+		
+	}
+	
+	@Override
 	public void setScreenParent(ScreensController controller) {
 		screenChanger = controller;
 	}

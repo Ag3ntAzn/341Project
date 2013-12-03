@@ -8,6 +8,11 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="visitorInterface.NewMemberController">
   <children>
+    <Text layoutX="30.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Purchase a Membership">
+      <font>
+        <Font size="26.0" />
+      </font>
+    </Text>
     <Label layoutX="69.0" layoutY="74.0" text="Habitat">
       <font>
         <Font size="14.0" fx:id="x1" />
@@ -23,15 +28,11 @@
     </Label>
     <Label font="$x1" layoutX="325.0" layoutY="74.0" text="Fee:">
       <labelFor>
-        <Text fx:id="feeDisplay" font="$x1" layoutX="394.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$0" />
+        <Text fx:id="feeDisplay" font="$x1" layoutX="394.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
       </labelFor>
     </Label>
     <fx:reference source="feeDisplay" />
-    <Text layoutX="30.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Become a member:">
-      <font>
-        <Font size="26.0" />
-      </font>
-    </Text>
+    <fx:reference source="habitat" />
     <TextField id="firstNameField" fx:id="firstName" layoutX="135.0" layoutY="150.0" prefHeight="30.0" prefWidth="239.0" />
     <TextField id="lastNameField" fx:id="lastName" layoutX="473.0" layoutY="150.0" prefHeight="30.0" prefWidth="239.0" />
     <TextField fx:id="address1" layoutX="135.0" layoutY="198.0" prefHeight="30.0" prefWidth="371.0" />
@@ -48,20 +49,33 @@
     <fx:reference source="city" />
     <Label font="$x1" layoutX="325.0" layoutY="297.0" text="State">
       <labelFor>
-        <MenuButton id="habitat" fx:id="state" layoutX="367.0" layoutY="291.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="--" />
+        <MenuButton id="habitat" fx:id="stateList" layoutX="367.0" layoutY="291.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="66.0" text="--" />
       </labelFor>
     </Label>
-    <fx:reference source="state" />
+    <fx:reference source="stateList" />
     <TextField fx:id="zipCode" layoutX="513.0" layoutY="291.0" prefHeight="30.0" prefWidth="90.0" />
     <Label font="$x1" labelFor="$zipCode" layoutX="445.0" layoutY="297.0" text="ZipCode" />
     <TextField fx:id="dob" layoutX="135.0" layoutY="334.0" prefHeight="30.0" prefWidth="90.0" promptText="mm/dd/yyyy" text="" />
-    <Label font="$x1" labelFor="$dob" layoutX="65.0" layoutY="340.0" text="Birth Date:" />
-    <Button layoutX="694.0" layoutY="543.0" mnemonicParsing="false" onAction="#goToMain" prefHeight="34.58203125" prefWidth="78.0" text="Back" />
-    <Button layoutX="653.0" layoutY="486.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="118.0" text="Submit">
+    <Label font="$x1" labelFor="$dob" layoutX="65.0" layoutY="340.0" text="Birth Date" />
+    <TextField fx:id="username" layoutX="136.0" layoutY="379.0" onAction="#submitMemberData" prefHeight="30.0" prefWidth="176.0" promptText="" />
+    <Label font="$x1" labelFor="$username" layoutX="58.0" layoutY="385.0" text="User Name" />
+    <Label font="$x1" layoutX="68.0" layoutY="431.0" text="Password">
+      <labelFor>
+        <PasswordField fx:id="password" layoutX="136.0" layoutY="424.0" onAction="#submitMemberData" prefHeight="30.0" prefWidth="176.0" promptText="" text="" />
+      </labelFor>
+    </Label>
+    <Label font="$x1" layoutX="348.0" layoutY="431.0" text="Confirm Password">
+      <labelFor>
+        <PasswordField id="password" fx:id="confirmPassword" layoutX="473.0" layoutY="424.0" onAction="#submitMemberData" prefHeight="30.0" prefWidth="200.0" promptText="" text="" />
+      </labelFor>
+    </Label>
+    <Button layoutX="653.0" layoutY="486.0" mnemonicParsing="false" onAction="#submitMemberData" prefHeight="45.0" prefWidth="118.0" text="Submit">
       <font>
         <Font size="16.0" />
       </font>
     </Button>
-    <fx:reference source="habitat" />
+    <Button layoutX="694.0" layoutY="543.0" mnemonicParsing="false" onAction="#goToMain" prefHeight="34.58203125" prefWidth="78.0" text="Back" />
+    <fx:reference source="password" />
+    <fx:reference source="confirmPassword" />
   </children>
 </AnchorPane>

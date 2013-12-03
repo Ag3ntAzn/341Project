@@ -19,8 +19,7 @@ public class MemberLoginController implements Screen {
 	private Button loginButton;
 
 	@Override
-	public void setScreenParent(ScreensController controller) {
-		screenChanger = controller;
+	public void initializeScreen() {
 		ChangeListener<String> listener = new ChangeListener<String>() {
 			@Override
 			public void changed(final ObservableValue<? extends String> observable, final String oldValue, final String newValue) {
@@ -33,6 +32,10 @@ public class MemberLoginController implements Screen {
 		username.textProperty().addListener(listener);
 		password.textProperty().addListener(listener);
 	}
+	@Override
+	public void setScreenParent(ScreensController controller) {
+		screenChanger = controller;
+	}
 	
 	@FXML
 	private void goToMain(ActionEvent e) {
@@ -43,7 +46,12 @@ public class MemberLoginController implements Screen {
 	
 	@FXML
 	private void submitLogin(ActionEvent e) {
-		if (!loginButton.isDisabled())
-			System.out.println("login");
+		if (!loginButton.isDisabled()) {
+			username.clear();
+			password.clear();
+			ExistingMemberController controller = (ExistingMemberController) (screenChanger.getController(Main.EXISTING_MEMBER_SCREEN));
+			controller.initializeScreen(1234);
+			screenChanger.setScreen(Main.EXISTING_MEMBER_SCREEN);
+		}
 	}
 }
