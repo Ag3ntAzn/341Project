@@ -155,8 +155,8 @@ public class NewMemberController implements Screen {
 						+ streetAdd2.getText() + " "
 						+ city.getText() + " "
 						+ stateList.getText() + " "
-						+ zipCode.getText() + ", "
-						+ generateDoB() + "', ");
+						+ zipCode.getText() + "', "
+						+ generateDoB() + ", ");
 		Date currTime = new Date(System.currentTimeMillis());
 		insertMemberStmt.append(currTime.toString() + ", ");
 		currTime.setTime(currTime.getTime() + (long)3.15569e10);
