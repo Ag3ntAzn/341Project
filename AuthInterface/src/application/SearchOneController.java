@@ -152,6 +152,7 @@ public class SearchOneController implements Screen{
 	private void goBack(ActionEvent e){
 		for(ObservableList<String> list : somefields)
 			list.clear();
+		textEntry.clear();
 		screenChanger.setScreen(Main.WELCOME_SCREEN);
 	}
 	

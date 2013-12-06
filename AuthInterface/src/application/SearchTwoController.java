@@ -167,6 +167,8 @@ public class SearchTwoController implements Screen{
 		for(ObservableList<String> list : somefields){
 			list.clear();
 		}
+		textBoxOne.clear();
+		textBoxTwo.clear();
 		screenChanger.setScreen(Main.WELCOME_SCREEN);
 	}
 
