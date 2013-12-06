@@ -30,8 +30,23 @@
         </AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
           <children>
-            <ListView id="AnimalList" fx:id="animalList" prefHeight="381.0" prefWidth="798.0" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <Button font="$x1" layoutX="698.0" layoutY="388.0" mnemonicParsing="false" onAction="#goToMainPage" prefHeight="30.0" prefWidth="95.0" text="Back" />
+            <HBox prefHeight="351.0" prefWidth="798.0" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
+              <children>
+                <ListView fx:id="animalSpecies" prefHeight="422.0" prefWidth="235.0" />
+                <ListView id="AnimalList" fx:id="animalNames" prefHeight="422.0" prefWidth="235.0" />
+                <ListView fx:id="animalDOB" prefHeight="422.0" prefWidth="177.0" />
+                <ListView fx:id="animalGender" prefHeight="422.0" prefWidth="162.822265625" />
+              </children>
+            </HBox>
+            <Label labelFor="$animalSpecies" layoutX="83.0" layoutY="0.0" text="Species">
+              <font>
+                <Font size="20.0" fx:id="x2" />
+              </font>
+            </Label>
+            <Label font="$x2" labelFor="$animalNames" layoutX="322.0" layoutY="0.0" text="Name" />
+            <Label font="$x2" labelFor="$animalDOB" layoutX="507.0" layoutY="0.0" text="Birth Date" />
+            <Label font="$x2" labelFor="$animalGender" layoutX="686.0" layoutY="0.0" text="Gender" />
           </children>
         </AnchorPane>
       </items>
