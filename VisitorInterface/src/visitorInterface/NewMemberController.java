@@ -133,9 +133,11 @@ public class NewMemberController implements Screen {
 			return;
 		}
 		StringBuilder insertMemberStmt = new StringBuilder("INSERT INTO members VALUES (");
-		StringBuilder insertLoginStmt = new StringBuilder("INSERT INTO account VALUES (");
+		StringBuilder insertLoginStmt = new StringBuilder("INSERT INTO accounts VALUES (");
 		try {
 			buildInsertStatements(insertMemberStmt, insertLoginStmt);
+			System.out.println(insertMemberStmt.toString());
+			System.out.println(insertLoginStmt.toString());
 			DatabaseQueryer.connectToAndUpdateDatabase(insertMemberStmt.toString());
 			DatabaseQueryer.connectToAndUpdateDatabase(insertLoginStmt.toString());
 			Dialog.showInfo("Account Created", "Thank you for purchasing a membership!");
@@ -155,17 +157,16 @@ public class NewMemberController implements Screen {
 						+ streetAdd2.getText() + " "
 						+ city.getText() + " "
 						+ stateList.getText() + " "
-						+ zipCode.getText() + "', "
-						+ generateDoB() + ", ");
+						+ zipCode.getText() + "','"
+						+ generateDoB() + "','");
 		Date currTime = new Date(System.currentTimeMillis());
-		insertMemberStmt.append(currTime.toString() + ", ");
+		insertMemberStmt.append(currTime.toString() + "','");
 		currTime.setTime(currTime.getTime() + (long)3.15569e10);
-		insertMemberStmt.append(currTime.toString() + ", 0, "
+		insertMemberStmt.append(currTime.toString() + "', 0, "
 						+ "'" + email.getText() + "', "
 						+ "'" + phoneNumber.getText() + "')");
-		insertLoginStmt.append("'" + userName.getText() + "', "
-							+ "'" + password.getText() + "', "
-							+ memberID + ")");
+		insertLoginStmt.append(memberID + ",'" + userName.getText() + "', "
+							+ "'" + password.getText() + "')");
 	}
 
 	private int generateMemberID() throws SQLException{
