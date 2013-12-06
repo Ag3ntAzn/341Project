@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.EmployeeNameController">
+  <children>
+    <SplitPane dividerPositions="0.2889447236180904" focusTraversable="true" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <children>
+            <TextField fx:id="firstNameField" layoutX="163.0" layoutY="21.0" prefWidth="200.0" />
+            <TextField fx:id="lastNameField" layoutX="163.0" layoutY="56.0" prefWidth="200.0" />
+            <Text layoutX="72.0" layoutY="37.0" scaleX="1.4764563507903568" scaleY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name: " />
+            <Text layoutX="72.0" layoutY="72.0" scaleX="1.4764563507903568" scaleY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name: " />
+            <Button fx:id="searchButton" layoutX="438.0" layoutY="32.0" mnemonicParsing="false" onAction="#performSearch" prefHeight="43.01171875" prefWidth="99.0" text="Search" />
+          </children>
+        </AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <children>
+            <ListView prefHeight="280.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+          </children>
+        </AnchorPane>
+      </items>
+    </SplitPane>
+  </children>
+</AnchorPane>
