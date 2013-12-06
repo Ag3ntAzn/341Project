@@ -8,8 +8,8 @@ import java.sql.Statement;
 
 public class DatabaseQueryer {
 		private static String hostName;
-		private static String userName;
 		private static Integer portNumber;
+		private static String userName;
 		private static String password;
 
 		public static ResultSet connectToAndQueryDatabase(String query) {
