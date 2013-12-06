@@ -163,9 +163,9 @@ public class NewMemberController implements Screen {
 		insertMemberStmt.append(currTime.toString() + ", 0, "
 						+ "'" + email.getText() + "', "
 						+ "'" + phoneNumber.getText() + "')");
-		insertLoginStmt.append(memberID + ", "
-							+ "'" + userName.getText() + "', "
-							+ "'" + password.getText() + "')");
+		insertLoginStmt.append("'" + userName.getText() + "', "
+							+ "'" + password.getText() + "', "
+							+ memberID + ")");
 	}
 
 	private int generateMemberID() throws SQLException{
@@ -212,11 +212,12 @@ public class NewMemberController implements Screen {
 			noErrors = false;
 		}
 		try {
-			ResultSet results = DatabaseQueryer.connectToAndQueryDatabase("SELECT username FROM accounts WHERE username='" + userName.getText() + "'");
+			ResultSet results = DatabaseQueryer.connectToAndQueryDatabase("SELECT * FROM accounts WHERE username='" + userName.getText() + "'");
 			if (results.isBeforeFirst()) {
 				errorMsg.append("User Name already taken. \n");
 				noErrors = false;
 			}
+			System.out.println(results.getMetaData().getColumnCount());
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.err.println("Oh NOES! Username lookup failed!");
