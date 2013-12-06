@@ -25,11 +25,4 @@ public class DataBaseQuery {
 				return null;
 			}
 		}
-		
-		public static void connectToAndUpdateDatabase(String statement) throws SQLException {
-			Connection dbCon = DriverManager.getConnection(
-					"jdbc:mysql://" + hostName + ":" + portNumber + "/databaseproject?user=" + userName + "&password=" + password);
-			Statement stmt = dbCon.createStatement();
-			stmt.executeUpdate(statement);
-		}
 }

@@ -29,17 +29,17 @@
           <children>
             <HBox prefHeight="280.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <children>
-                <ListView fx:id="lv1" prefHeight="280.0" prefWidth="54.45" />
-                <ListView fx:id="lv2" prefHeight="280.0" prefWidth="54.45" />
-                <ListView fx:id="lv3" prefHeight="280.0" prefWidth="54.45" />
-                <ListView fx:id="lv4" prefHeight="280.0" prefWidth="54.45" />
-                <ListView fx:id="lv5" prefHeight="280.0" prefWidth="54.45" />
-                <ListView fx:id="lv6" prefHeight="280.0" prefWidth="54.45" />
-                <ListView fx:id="lv7" prefHeight="280.0" prefWidth="54.45" />
-                <ListView fx:id="lv8" prefHeight="280.0" prefWidth="54.45" />
-                <ListView fx:id="lv9" prefHeight="280.0" prefWidth="54.45" />
-                <ListView fx:id="lv10" prefHeight="280.0" prefWidth="54.45" />
-                <ListView fx:id="lv11" prefHeight="280.0" prefWidth="59.0" />
+                <ListView fx:id="lv1" editable="true" prefHeight="280.0" prefWidth="54.45" />
+                <ListView fx:id="lv2" editable="true" prefHeight="280.0" prefWidth="54.45" />
+                <ListView fx:id="lv3" editable="true" prefHeight="280.0" prefWidth="54.45" />
+                <ListView fx:id="lv4" editable="true" prefHeight="280.0" prefWidth="54.45" />
+                <ListView fx:id="lv5" editable="true" prefHeight="280.0" prefWidth="54.45" />
+                <ListView fx:id="lv6" editable="true" prefHeight="280.0" prefWidth="54.45" />
+                <ListView fx:id="lv7" editable="true" prefHeight="280.0" prefWidth="54.45" />
+                <ListView fx:id="lv8" editable="true" prefHeight="280.0" prefWidth="54.45" />
+                <ListView fx:id="lv9" editable="true" prefHeight="280.0" prefWidth="54.45" />
+                <ListView fx:id="lv10" editable="true" prefHeight="280.0" prefWidth="54.45" />
+                <ListView fx:id="lv11" editable="true" prefHeight="280.0" prefWidth="59.0" />
               </children>
             </HBox>
           </children>
