@@ -60,11 +60,14 @@ public class AnimalController implements Screen {
 			e.printStackTrace();
 			System.err.println("Error reading from result set");
 		}
-
-		animalFields.add((ObservableList<String>) animalSpecies.getItems());
-		animalFields.add((ObservableList<String>) animalNames.getItems());
-		animalFields.add((ObservableList<String>) animalDOB.getItems());
-		animalFields.add((ObservableList<String>) animalGender.getItems());
+		finally {
+			speciesList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+			
+			animalFields.add((ObservableList<String>) animalSpecies.getItems());
+			animalFields.add((ObservableList<String>) animalNames.getItems());
+			animalFields.add((ObservableList<String>) animalDOB.getItems());
+			animalFields.add((ObservableList<String>) animalGender.getItems());
+		}
 	}
 	@Override
 	public void setScreenParent(ScreensController controller) {
@@ -73,15 +76,22 @@ public class AnimalController implements Screen {
 	
 	@SuppressWarnings("unchecked")
 	@FXML
-	private void populateSpecies(ActionEvent e) {
-		speciesList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+	private void populateSpecies(ActionEvent actionEvt) {
 		ObservableList<String> speciesNames = (ObservableList<String>) speciesList.getItems();
 		if (!speciesNames.isEmpty())
 			speciesNames.clear();
-		String text = ((MenuItem)e.getSource()).getText();
-		habitatList.setText(text);
-		String query = "";
-		
+		String habitatName = ((MenuItem)actionEvt.getSource()).getText();
+		habitatList.setText(habitatName);
+		try {
+			String query = "SELECT DISTINCT species FROM pens left join livesin on pens.penid = livesin.penid WHERE habitatname='" + habitatName + "'";
+			ResultSet speciesInHab = DatabaseQueryer.connectToAndQueryDatabase(query);
+			while (speciesInHab.next())
+				speciesNames.add(speciesInHab.getString("species"));
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			System.err.println("You have fucked up now");
+		}
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -95,11 +105,11 @@ public class AnimalController implements Screen {
 		//build where clause
 		StringBuilder whereClause = new StringBuilder();
 		for (String species : selected)
-			whereClause.append("A.species=" + species + " OR ");
+			whereClause.append("species='" + species + "' OR ");
 		whereClause.delete(whereClause.length() - 4, whereClause.length());
 
 		try {
-		String query = "SELECT * FROM Animals A WHERE " + whereClause.toString();
+		String query = "SELECT * FROM animals WHERE " + whereClause.toString();
 			ResultSet animalList = DatabaseQueryer.connectToAndQueryDatabase(query);
 			if (animalList == null) {
 				return;
