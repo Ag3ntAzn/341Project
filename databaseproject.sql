@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50534
 File Encoding         : 65001
 
-Date: 2013-12-06 11:18:45
+Date: 2013-12-06 12:57:58
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,6 +24,7 @@ CREATE TABLE `accounts` (
   `username` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
   PRIMARY KEY (`memberid`),
+  KEY `usernameIndex` (`username`) USING HASH,
   CONSTRAINT `Integer` FOREIGN KEY (`memberid`) REFERENCES `members` (`memberID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -32,6 +33,8 @@ CREATE TABLE `accounts` (
 -- ----------------------------
 INSERT INTO `accounts` VALUES ('1', 'Hello', 'World');
 INSERT INTO `accounts` VALUES ('2', 'password', 'username');
+INSERT INTO `accounts` VALUES ('3', 'james', 'james');
+INSERT INTO `accounts` VALUES ('4', 'asdf', 'asdf');
 
 -- ----------------------------
 -- Table structure for animals
@@ -94,7 +97,7 @@ CREATE TABLE `employees` (
   `ssn` int(9) NOT NULL,
   `firstname` varchar(25) NOT NULL,
   `lastname` varchar(25) NOT NULL,
-  `address` varchar(40) NOT NULL,
+  `address` varchar(300) NOT NULL,
   `salary` double(20,0) NOT NULL,
   `DOB` date NOT NULL,
   `startDate` date NOT NULL,
@@ -256,7 +259,7 @@ CREATE TABLE `members` (
   `habitatName` varchar(25) NOT NULL,
   `firstName` varchar(25) NOT NULL,
   `lastName` varchar(25) NOT NULL,
-  `address` varchar(40) NOT NULL,
+  `address` varchar(300) NOT NULL,
   `DOB` date NOT NULL,
   `membershipStart` date NOT NULL,
   `membershipExpiration` date NOT NULL,
@@ -277,6 +280,8 @@ CREATE TABLE `members` (
 -- ----------------------------
 INSERT INTO `members` VALUES ('1', 'Reptile', 'Michael', 'Harkins', 'here', '2013-05-14', '2013-11-04', '2013-11-16', '1', 'igotmoney@money.money', 'DATCASH');
 INSERT INTO `members` VALUES ('2', 'Mammal', 'Michael', 'Harkins', 'here', '2013-11-27', '2013-10-29', '2013-11-29', '2', 'igotmoney@money.money', 'GAMBLERS');
+INSERT INTO `members` VALUES ('3', 'Arthropod', 'James', 'James', '123  c KS 11111', '1991-11-30', '2013-12-06', '2014-12-06', '0', 'mj@mj.com', '(630) 215-2222');
+INSERT INTO `members` VALUES ('4', 'Amphibians', 'asdf', 'asdf', 'asdf asdf asdf AL 12345', '2222-02-02', '2013-12-06', '2014-12-06', '0', 'asdf@asdf.com', '(234) 234-1234');
 
 -- ----------------------------
 -- Table structure for membervisits
