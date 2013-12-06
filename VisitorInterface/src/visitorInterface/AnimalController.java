@@ -1,5 +1,8 @@
 package visitorInterface;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -26,22 +29,26 @@ public class AnimalController implements Screen {
 	@Override
 	public void initializeScreen() {
 		ObservableList<MenuItem> habitats = habitatList.getItems();
-		MenuItem hab1 = new MenuItem("Hab 1");
-		hab1.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent e) {
-				populateSpecies(e);
+		String query = "SELECT name FROM habitats";
+		ResultSet habitatNames = DatabaseQueryer.connectToAndQueryDatabase(query);
+		if (habitatNames == null) {
+			return;
+		}
+		try {
+			while (habitatNames.next()) {
+				MenuItem item = new MenuItem(habitatNames.getString(1));
+				item.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent e) {
+						populateSpecies(e);
+					}
+				});
+				habitats.add(item);
 			}
-		});
-		habitats.add(hab1);
-		MenuItem hab2 = new MenuItem("Hab 2");
-		hab2.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent e) {
-				populateSpecies(e);
-			}
-		});
-		habitats.add(hab2);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.err.println("Error reading from result set");
+		}
 	}
 	@Override
 	public void setScreenParent(ScreensController controller) {
