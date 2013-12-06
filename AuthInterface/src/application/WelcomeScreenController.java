@@ -24,26 +24,38 @@ public class WelcomeScreenController implements Screen{
 	
 	@FXML
 	private void employeeNameClick(ActionEvent e){
+		SearchTwoController toChange = (SearchTwoController) (changedScreen.getController(Main.SCREEN_TWO));
+		toChange.setScreenParameters("First Name: ", "Last Name: ");
 		changedScreen.setScreen(Main.SCREEN_TWO);
 	}
 	@FXML
 	private void employeeSSNClick(ActionEvent e){
+		SearchOneController controller1 = (SearchOneController)(changedScreen.getController(Main.SCREEN_ONE));
+		controller1.setParameter("SSN: ");
 		changedScreen.setScreen(Main.SCREEN_ONE);
 	}
 	@FXML 
 	private void employeeHabitatClick(ActionEvent e){
+		SearchOneController controller1 = (SearchOneController)(changedScreen.getController(Main.SCREEN_ONE));
+		controller1.setParameter("Habitat Name:");
 		changedScreen.setScreen(Main.SCREEN_ONE);
 	}
 	@FXML
 	private void habitatManagerClick(ActionEvent e){
+		SearchTwoController toChange = (SearchTwoController) (changedScreen.getController(Main.SCREEN_TWO));
+		toChange.setScreenParameters("Manager First Name: ", "Manager Last Name: ");
 		changedScreen.setScreen(Main.SCREEN_TWO);
 	}
 	@FXML 
 	private void habitatNameClick(ActionEvent e){
+		SearchOneController controller1 = (SearchOneController)(changedScreen.getController(Main.SCREEN_ONE));
+		controller1.setParameter("Habitat Name: ");
 		changedScreen.setScreen(Main.SCREEN_ONE);
 	}
 	@FXML
 	private void habitatPenClick(ActionEvent e){
+		SearchOneController controller1 = (SearchOneController)(changedScreen.getController(Main.SCREEN_ONE));
+		controller1.setParameter("Pen Number: ");
 		changedScreen.setScreen(Main.SCREEN_ONE);
 	}
 }

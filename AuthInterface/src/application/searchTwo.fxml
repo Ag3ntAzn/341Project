@@ -15,8 +15,8 @@
           <children>
             <TextField id="firstNameField" fx:id="textBoxOne" layoutX="163.0" layoutY="21.0" prefWidth="200.0" />
             <TextField id="lastNameField" fx:id="textBoxTwo" layoutX="163.0" layoutY="56.0" prefWidth="200.0" />
-            <Text fx:id="textOne" layoutX="72.0" layoutY="37.0" scaleX="1.4764563507903568" scaleY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name: " />
-            <Text fx:id="textTwo" layoutX="72.0" layoutY="72.0" scaleX="1.4764563507903568" scaleY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name: " />
+            <Text fx:id="textOne" layoutX="25.0" layoutY="40.0" scaleX="1.4764563507903568" scaleY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="jaav" />
+            <Text fx:id="textTwo" layoutX="29.0" layoutY="73.0" scaleX="1.4764563507903568" scaleY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name: " />
             <Button fx:id="searchButton" layoutX="438.0" layoutY="32.0" mnemonicParsing="false" onAction="#performSearch" prefHeight="43.01171875" prefWidth="99.0" text="Search" />
             <Button layoutX="14.0" layoutY="8.0" minHeight="15.960845947265625" mnemonicParsing="false" onAction="#goBack" prefHeight="15.960845947265625" prefWidth="42.0" text="Back">
               <font>
@@ -27,7 +27,21 @@
         </AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
           <children>
-            <ListView prefHeight="280.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <HBox prefHeight="280.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <children>
+                <ListView fx:id="lv1" prefHeight="280.0" prefWidth="54.45" />
+                <ListView fx:id="lv2" prefHeight="280.0" prefWidth="54.45" />
+                <ListView fx:id="lv3" prefHeight="280.0" prefWidth="54.45" />
+                <ListView fx:id="lv4" prefHeight="280.0" prefWidth="54.45" />
+                <ListView fx:id="lv5" prefHeight="280.0" prefWidth="54.45" />
+                <ListView fx:id="lv6" prefHeight="280.0" prefWidth="54.45" />
+                <ListView fx:id="lv7" prefHeight="280.0" prefWidth="54.45" />
+                <ListView fx:id="lv8" prefHeight="280.0" prefWidth="54.45" />
+                <ListView fx:id="lv9" prefHeight="280.0" prefWidth="54.45" />
+                <ListView fx:id="lv10" prefHeight="280.0" prefWidth="54.45" />
+                <ListView fx:id="lv11" prefHeight="280.0" prefWidth="59.0" />
+              </children>
+            </HBox>
           </children>
         </AnchorPane>
       </items>
