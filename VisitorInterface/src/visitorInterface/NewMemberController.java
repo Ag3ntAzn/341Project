@@ -106,6 +106,10 @@ public class NewMemberController implements Screen {
 	
 	@FXML
 	private void goToMain(ActionEvent e) {
+		for (TextField field : requiredTextFields)
+			field.clear();
+		stateList.setText("--");
+		errorText.setText("");
 		screenChanger.setScreen(Main.MAIN_SCREEN);
 	}
 	
@@ -136,8 +140,6 @@ public class NewMemberController implements Screen {
 		StringBuilder insertLoginStmt = new StringBuilder("INSERT INTO accounts VALUES (");
 		try {
 			buildInsertStatements(insertMemberStmt, insertLoginStmt);
-			System.out.println(insertMemberStmt.toString());
-			System.out.println(insertLoginStmt.toString());
 			DatabaseQueryer.connectToAndUpdateDatabase(insertMemberStmt.toString());
 			DatabaseQueryer.connectToAndUpdateDatabase(insertLoginStmt.toString());
 			Dialog.showInfo("Account Created", "Thank you for purchasing a membership!");
@@ -218,7 +220,6 @@ public class NewMemberController implements Screen {
 				errorMsg.append("User Name already taken. \n");
 				noErrors = false;
 			}
-			System.out.println(results.getMetaData().getColumnCount());
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.err.println("Oh NOES! Username lookup failed!");
@@ -236,7 +237,7 @@ public class NewMemberController implements Screen {
 			errorMsg.append("Invalid Email\n");
 			noErrors = false;
 		}
-		if (!phoneNumber.getText().matches("\\([0-9]{3}\\) [0-9]{3}-[0-9]{4}")) {
+		if (!phoneNumber.getText().matches("\\([0-9]{3}\\)[0-9]{3}-[0-9]{4}")) {
 			errorMsg.append("Invalid PhoneNumber");
 			noErrors = false;
 		}

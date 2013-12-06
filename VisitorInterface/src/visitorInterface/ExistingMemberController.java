@@ -1,5 +1,8 @@
 package visitorInterface;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import name.antonsmirnov.javafx.dialog.Dialog;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -99,8 +102,18 @@ public class ExistingMemberController implements Screen{
 	}
 
 	public void initializeScreen(int memberID) {
-		//TODO: query db with memberID
-		stateList.setText("AL");
+		try {
+			ResultSet member = DatabaseQueryer.connectToAndQueryDatabase("SELECT * FROM members WHERE memberid=" + memberID);
+			if (!member.isBeforeFirst()) 
+				System.err.println("Error, member not found");
+			else {
+				titleText.setText("Welcome " + member.getString("lastname") + ", " + member.getString("firstname"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.err.println("Error looking up member.");
+		}
+		
 		
 	}
 }

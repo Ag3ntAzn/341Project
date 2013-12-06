@@ -1,5 +1,8 @@
 package visitorInterface;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -7,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 public class MemberLoginController implements Screen {
 	
@@ -17,7 +21,9 @@ public class MemberLoginController implements Screen {
 	private PasswordField password;
 	@FXML
 	private Button loginButton;
-
+	@FXML
+	private Text errorText;
+	
 	@Override
 	public void initializeScreen() {
 		ChangeListener<String> listener = new ChangeListener<String>() {
@@ -50,8 +56,22 @@ public class MemberLoginController implements Screen {
 			username.clear();
 			password.clear();
 			ExistingMemberController controller = (ExistingMemberController) (screenChanger.getController(Main.EXISTING_MEMBER_SCREEN));
-			controller.initializeScreen(1234);
-			screenChanger.setScreen(Main.EXISTING_MEMBER_SCREEN);
+			try {
+				String query = "SELECT memberid FROM accounts WHERE username='"
+								+ username.getText() + "' AND password='" + password.getText() + "'";
+				ResultSet member = DatabaseQueryer.connectToAndQueryDatabase(query);
+				if (!member.isBeforeFirst())
+					errorText.setText("Username and password combination not found.");
+				else {
+					member.first();
+					controller.initializeScreen(member.getInt("memberid"));
+					screenChanger.setScreen(Main.EXISTING_MEMBER_SCREEN);
+				}
+			}
+			catch (SQLException sqlEx) {
+				sqlEx.printStackTrace();
+				System.err.println("Username and password query failed.");
+			}
 		}
 	}
 }
