@@ -10,7 +10,7 @@ public class Main extends Application {
 	public static final String MAIN_SCREEN = "MainPage";
 	public static final String ANIMAL_SCREEN = "Animal";
 	public static final String MEMBERS_LOGIN_SCREEN = "MemberLogin";
-	public static final String MEMBERSHIP_FEE_SCREEN = "NewMember";
+	public static final String NEW_MEMBER_SCREEN = "NewMember";
 	public static final String EXISTING_MEMBER_SCREEN = "ExistingMember";
 	public static final String[] states = {"AL", "AK", "AZ", "AR" ,"CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "ME", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"};
 	@Override
@@ -20,7 +20,7 @@ public class Main extends Application {
 			screensController.loadScreen(Main.MAIN_SCREEN);
 			screensController.loadScreen(Main.ANIMAL_SCREEN);
 			screensController.loadScreen(Main.MEMBERS_LOGIN_SCREEN);
-			screensController.loadScreen(Main.MEMBERSHIP_FEE_SCREEN);
+			screensController.loadScreen(Main.NEW_MEMBER_SCREEN);
 			screensController.loadScreen(Main.EXISTING_MEMBER_SCREEN);
 			screensController.setScreen(Main.MAIN_SCREEN);
 			

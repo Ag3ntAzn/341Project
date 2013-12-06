@@ -14,7 +14,7 @@
     </AnchorPane>
     <AnchorPane prefHeight="200.0" prefWidth="200.0">
       <children>
-        <Button layoutX="321.0" layoutY="59.0" mnemonicParsing="false" onAction="#goToMembershipFeeScreen" prefHeight="83.0" prefWidth="158.0" text="Purchase a Membership" />
+        <Button layoutX="321.0" layoutY="59.0" mnemonicParsing="false" onAction="#goToNewMemberScreen" prefHeight="83.0" prefWidth="158.0" text="Purchase a Membership" />
       </children>
     </AnchorPane>
     <AnchorPane prefHeight="200.0" prefWidth="200.0">

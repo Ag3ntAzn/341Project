@@ -29,7 +29,7 @@
     <fx:reference source="city" />
     <Label font="$x1" layoutX="408.0" layoutY="194.0" text="State">
       <labelFor>
-        <MenuButton id="habitat" fx:id="stateList" layoutX="450.0" layoutY="188.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="62.0" text="--" />
+        <MenuButton id="stateList" fx:id="stateList" layoutX="450.0" layoutY="188.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="62.0" text="--" />
       </labelFor>
     </Label>
     <fx:reference source="stateList" />

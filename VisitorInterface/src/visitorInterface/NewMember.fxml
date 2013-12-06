@@ -8,22 +8,12 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="visitorInterface.NewMemberController">
   <children>
-    <Text layoutX="30.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Purchase a Membership">
-      <font>
-        <Font size="26.0" />
-      </font>
-    </Text>
     <Label layoutX="69.0" layoutY="74.0" text="Habitat">
       <font>
         <Font size="14.0" fx:id="x1" />
       </font>
       <labelFor>
-        <MenuButton fx:id="habitat" layoutX="135.0" layoutY="75.0" mnemonicParsing="false" text="Choose a habitat...">
-          <items>
-            <MenuItem mnemonicParsing="false" onAction="#getMembershipFee" text="Hab 1" />
-            <MenuItem mnemonicParsing="false" onAction="#getMembershipFee" text="Hab 2" />
-          </items>
-        </MenuButton>
+        <MenuButton id="habitat" fx:id="habitatList" layoutX="135.0" layoutY="75.0" mnemonicParsing="false" text="Choose a habitat..." />
       </labelFor>
     </Label>
     <Label font="$x1" layoutX="325.0" layoutY="74.0" text="Fee:">
@@ -31,51 +21,103 @@
         <Text fx:id="feeDisplay" font="$x1" layoutX="394.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
       </labelFor>
     </Label>
-    <fx:reference source="feeDisplay" />
-    <fx:reference source="habitat" />
-    <TextField id="firstNameField" fx:id="firstName" layoutX="135.0" layoutY="150.0" prefHeight="30.0" prefWidth="239.0" />
-    <TextField id="lastNameField" fx:id="lastName" layoutX="473.0" layoutY="150.0" prefHeight="30.0" prefWidth="239.0" />
-    <TextField fx:id="address1" layoutX="135.0" layoutY="198.0" prefHeight="30.0" prefWidth="371.0" />
-    <Label font="$x1" labelFor="$firstName" layoutX="60.0" layoutY="156.0" text="First Name" />
-    <Label font="$x1" labelFor="$lastName" layoutX="394.0" layoutY="156.0" text="Last Name" />
-    <Label font="$x1" labelFor="$address1" layoutX="37.0" layoutY="204.0" text="Street Address" />
-    <TextField fx:id="address2" layoutX="135.0" layoutY="245.0" prefHeight="30.0" prefWidth="371.0" />
-    <Label font="$x1" labelFor="$address2" layoutX="25.0" layoutY="251.0" text="Street Address 2" />
-    <Label font="$x1" layoutX="103.0" layoutY="297.0" text="City">
+    <Label font="$x1" layoutX="59.0" layoutY="128.0" text="First Name">
       <labelFor>
-        <TextField fx:id="city" layoutX="135.0" layoutY="291.0" prefHeight="30.0" prefWidth="176.0" />
+        <TextField id="firstNameField" fx:id="firstName" layoutX="134.0" layoutY="122.0" prefHeight="30.0" prefWidth="239.0" />
       </labelFor>
     </Label>
-    <fx:reference source="city" />
-    <Label font="$x1" layoutX="325.0" layoutY="297.0" text="State">
+    <Label font="$x1" layoutX="393.0" layoutY="128.0" text="Last Name">
       <labelFor>
-        <MenuButton id="habitat" fx:id="stateList" layoutX="367.0" layoutY="291.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="66.0" text="--" />
+        <TextField id="lastNameField" fx:id="lastName" layoutX="472.0" layoutY="122.0" prefHeight="30.0" prefWidth="239.0" />
       </labelFor>
     </Label>
-    <fx:reference source="stateList" />
-    <TextField fx:id="zipCode" layoutX="513.0" layoutY="291.0" prefHeight="30.0" prefWidth="90.0" />
-    <Label font="$x1" labelFor="$zipCode" layoutX="445.0" layoutY="297.0" text="ZipCode" />
-    <TextField fx:id="dob" layoutX="135.0" layoutY="334.0" prefHeight="30.0" prefWidth="90.0" promptText="mm/dd/yyyy" text="" />
-    <Label font="$x1" labelFor="$dob" layoutX="65.0" layoutY="340.0" text="Birth Date" />
-    <TextField fx:id="username" layoutX="136.0" layoutY="379.0" onAction="#submitMemberData" prefHeight="30.0" prefWidth="176.0" promptText="" />
-    <Label font="$x1" labelFor="$username" layoutX="58.0" layoutY="385.0" text="User Name" />
+    <Label font="$x1" layoutX="36.0" layoutY="176.0" text="Street Address">
+      <labelFor>
+        <TextField id="address1" fx:id="streetAdd1" layoutX="134.0" layoutY="170.0" prefHeight="30.0" prefWidth="371.0" />
+      </labelFor>
+    </Label>
+    <Label font="$x1" layoutX="24.0" layoutY="223.0" text="Street Address 2">
+      <labelFor>
+        <TextField id="address2" fx:id="streetAdd2" layoutX="134.0" layoutY="217.0" prefHeight="30.0" prefWidth="371.0" />
+      </labelFor>
+    </Label>
+    <Label font="$x1" layoutX="102.0" layoutY="269.0" text="City">
+      <labelFor>
+        <TextField fx:id="city" layoutX="134.0" layoutY="263.0" prefHeight="30.0" prefWidth="176.0" />
+      </labelFor>
+    </Label>
+    <Label font="$x1" layoutX="324.0" layoutY="269.0" text="State">
+      <labelFor>
+        <MenuButton id="habitat" fx:id="stateList" layoutX="366.0" layoutY="263.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="66.0" text="--" />
+      </labelFor>
+    </Label>
+    <Label font="$x1" layoutX="444.0" layoutY="269.0" text="ZipCode">
+      <labelFor>
+        <TextField fx:id="zipCode" layoutX="512.0" layoutY="263.0" prefHeight="30.0" prefWidth="90.0" />
+      </labelFor>
+    </Label>
+    <Label font="$x1" layoutX="64.0" layoutY="312.0" text="Birth Date">
+      <labelFor>
+        <TextField id="dob" fx:id="birthDate" layoutX="134.0" layoutY="306.0" prefHeight="30.0" prefWidth="90.0" promptText="mm/dd/yyyy" text="" />
+      </labelFor>
+    </Label>
+    <Label font="$x1" layoutX="258.0" layoutY="312.0" text="Phone Number">
+      <labelFor>
+        <TextField id="username" fx:id="phoneNumber" layoutX="366.0" layoutY="306.0" onAction="#submitMemberData" prefHeight="30.0" prefWidth="176.0" promptText="(123) 456-7890" />
+      </labelFor>
+    </Label>
+    <Label font="$x1" layoutX="92.0" layoutY="352.0" text="Email">
+      <labelFor>
+        <TextField id="username" fx:id="email" layoutX="136.0" layoutY="347.0" onAction="#submitMemberData" prefHeight="30.0" prefWidth="176.0" promptText="example@domain.com" />
+      </labelFor>
+    </Label>
+    <Label font="$x1" layoutX="381.0" layoutY="352.0" text="Confirm Email">
+      <labelFor>
+        <TextField id="username" fx:id="confirmEmail" layoutX="477.0" layoutY="347.0" onAction="#submitMemberData" prefHeight="30.0" prefWidth="176.0" promptText="example@domain.com" />
+      </labelFor>
+    </Label>
+    <Label font="$x1" layoutX="58.0" layoutY="390.0" text="User Name">
+      <labelFor>
+        <TextField id="username" fx:id="userName" layoutX="136.0" layoutY="384.0" onAction="#submitMemberData" prefHeight="30.0" prefWidth="176.0" promptText="" />
+      </labelFor>
+    </Label>
     <Label font="$x1" layoutX="68.0" layoutY="431.0" text="Password">
       <labelFor>
         <PasswordField fx:id="password" layoutX="136.0" layoutY="424.0" onAction="#submitMemberData" prefHeight="30.0" prefWidth="176.0" promptText="" text="" />
       </labelFor>
     </Label>
-    <Label font="$x1" layoutX="348.0" layoutY="431.0" text="Confirm Password">
+    <Label font="$x1" layoutX="352.0" layoutY="431.0" text="Confirm Password">
       <labelFor>
-        <PasswordField id="password" fx:id="confirmPassword" layoutX="473.0" layoutY="424.0" onAction="#submitMemberData" prefHeight="30.0" prefWidth="200.0" promptText="" text="" />
+        <PasswordField id="password" fx:id="confirmPassword" layoutX="477.0" layoutY="424.0" onAction="#submitMemberData" prefHeight="30.0" prefWidth="200.0" promptText="" text="" />
       </labelFor>
     </Label>
+    <Text layoutX="30.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Purchase a Membership">
+      <font>
+        <Font size="26.0" />
+      </font>
+    </Text>
+    <fx:reference source="feeDisplay" />
+    <fx:reference source="habitatList" />
+    <fx:reference source="firstName" />
+    <fx:reference source="lastName" />
+    <fx:reference source="streetAdd1" />
+    <fx:reference source="streetAdd2" />
+    <fx:reference source="city" />
+    <fx:reference source="stateList" />
+    <fx:reference source="zipCode" />
+    <fx:reference source="birthDate" />
+    <fx:reference source="phoneNumber" />
+    <fx:reference source="email" />
+    <fx:reference source="confirmEmail" />
+    <fx:reference source="userName" />
+    <fx:reference source="password" />
+    <fx:reference source="confirmPassword" />
     <Button layoutX="653.0" layoutY="486.0" mnemonicParsing="false" onAction="#submitMemberData" prefHeight="45.0" prefWidth="118.0" text="Submit">
       <font>
         <Font size="16.0" />
       </font>
     </Button>
     <Button layoutX="694.0" layoutY="543.0" mnemonicParsing="false" onAction="#goToMain" prefHeight="34.58203125" prefWidth="78.0" text="Back" />
-    <fx:reference source="password" />
-    <fx:reference source="confirmPassword" />
+    <Text fx:id="errorText" fill="RED" font="$x1" layoutX="64.0" layoutY="491.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
   </children>
 </AnchorPane>

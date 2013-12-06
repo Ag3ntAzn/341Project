@@ -39,39 +39,30 @@ public class AnimalController implements Screen {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void initializeScreen() {
-		ObservableList<MenuItem> habitats = habitatList.getItems();
-		try {
-			String query = "SELECT name FROM habitats";
-			ResultSet habitatNames = DatabaseQueryer.connectToAndQueryDatabase(query);
-			if (habitatNames == null) {
-				return;
-			}
-			while (habitatNames.next()) {
-				MenuItem item = new MenuItem(habitatNames.getString(1));
-				item.setOnAction(new EventHandler<ActionEvent>() {
-					@Override
-					public void handle(ActionEvent e) {
-						populateSpecies(e);
-					}
-				});
-				habitats.add(item);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.err.println("Error reading from result set");
-		}
-		finally {
-			speciesList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-			
-			animalFields.add((ObservableList<String>) animalSpecies.getItems());
-			animalFields.add((ObservableList<String>) animalNames.getItems());
-			animalFields.add((ObservableList<String>) animalDOB.getItems());
-			animalFields.add((ObservableList<String>) animalGender.getItems());
-		}
+		speciesList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		
+		animalFields.add((ObservableList<String>) animalSpecies.getItems());
+		animalFields.add((ObservableList<String>) animalNames.getItems());
+		animalFields.add((ObservableList<String>) animalDOB.getItems());
+		animalFields.add((ObservableList<String>) animalGender.getItems());
 	}
+	
 	@Override
 	public void setScreenParent(ScreensController controller) {
 		screenChanger = controller;
+	}
+	
+	public void populateHabitats() {
+		ObservableList<MenuItem> habitats = habitatList.getItems();
+		DatabaseQueryer.populateMenuButtonWithHabitatNames(habitats);
+		for (MenuItem item : habitats){
+			item.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent e) {
+					populateSpecies(e);
+				}
+			});
+		}
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -99,9 +90,20 @@ public class AnimalController implements Screen {
 	private void searchForAnimals(ActionEvent e) {
 		ObservableList<String> selected = (ObservableList<String>) speciesList.getSelectionModel().getSelectedItems();
 		
+		if (selected.isEmpty()) {
+			errorMsg.setVisible(true);
+			return;
+		}
+		else if (errorMsg.isVisible())
+			errorMsg.setVisible(false);
+		
 		for (ObservableList<String> list : animalFields)
 			if (!list.isEmpty())
 				list.clear();
+		queryForAnimalsAndDisplay(selected);
+	}
+	
+	private void queryForAnimalsAndDisplay(ObservableList<String> selected) {
 		//build where clause
 		StringBuilder whereClause = new StringBuilder();
 		for (String species : selected)

@@ -19,6 +19,7 @@ public class MainPageController implements Screen {
 	
 	@FXML
 	private void goToAnimalLocationScreen(ActionEvent e) {
+		((AnimalController)screenChanger.getController(Main.ANIMAL_SCREEN)).populateHabitats();
 		screenChanger.setScreen(Main.ANIMAL_SCREEN);
 	}
 	
@@ -28,7 +29,8 @@ public class MainPageController implements Screen {
 	}
 	
 	@FXML
-	private void goToMembershipFeeScreen(ActionEvent e) {
-		screenChanger.setScreen(Main.MEMBERSHIP_FEE_SCREEN);
+	private void goToNewMemberScreen(ActionEvent e) {
+		((NewMemberController)screenChanger.getController(Main.NEW_MEMBER_SCREEN)).populateHabitats();
+		screenChanger.setScreen(Main.NEW_MEMBER_SCREEN);
 	}
 }
