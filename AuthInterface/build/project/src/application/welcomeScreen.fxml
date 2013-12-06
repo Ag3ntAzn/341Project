@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?scenebuilder-background-color 0xccf9ffff?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.WelcomeScreenController">
+  <children>
+    <Text layoutX="230.0" layoutY="75.0" scaleX="2.7283600750156283" scaleY="3.4434654919236416" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME, ADMINISTRATOR!" />
+    <Text layoutX="201.0" layoutY="158.0" scaleX="1.4179057509243962" scaleY="2.1904062652961334" strokeType="OUTSIDE" strokeWidth="0.0" text="Click on a Button to View Information" />
+    <MenuButton fx:id="employeeDropDown" layoutX="109.0" layoutY="213.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.5" text="Employees">
+      <items>
+        <MenuItem mnemonicParsing="false" onAction="#employeeNameClick" text="Look up by name" fx:id="employeeNameLookup" />
+        <MenuItem mnemonicParsing="false" onAction="#employeeSSNClick" text="Look up by ssn" fx:id="employeeSSNLookup" />
+        <MenuItem mnemonicParsing="false" onAction="#employeeHabitatClick" text="Look up by habitat" fx:id="employeeHabitatLookup" />
+      </items>
+    </MenuButton>
+    <MenuButton fx:id="habitatDropDown" layoutX="366.0" layoutY="213.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.5" text="Habitats">
+      <items>
+        <MenuItem mnemonicParsing="false" onAction="#habitatNameClick" text="Look up by name" fx:id="habitatNameLookup" />
+        <MenuItem mnemonicParsing="false" onAction="#habitatPenClick" text="Look up by pen #" fx:id="habitatPenLookup" />
+        <MenuItem mnemonicParsing="false" onAction="#habitatManagerClick" text="Look up by manager" fx:id="habitatManagerLookup" />
+      </items>
+    </MenuButton>
+  </children>
+</AnchorPane>
