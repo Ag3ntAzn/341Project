@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50614
 File Encoding         : 65001
 
-Date: 2013-12-01 12:29:09
+Date: 2013-12-05 20:54:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,11 +20,11 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `accounts`;
 CREATE TABLE `accounts` (
-  `Integer` int(15) NOT NULL,
+  `memberid` int(15) NOT NULL,
   `username` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
-  PRIMARY KEY (`Integer`),
-  CONSTRAINT `Integer` FOREIGN KEY (`Integer`) REFERENCES `members` (`memberID`) ON DELETE CASCADE ON UPDATE CASCADE
+  PRIMARY KEY (`memberid`),
+  CONSTRAINT `Integer` FOREIGN KEY (`memberid`) REFERENCES `members` (`memberID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -134,8 +134,8 @@ CREATE TABLE `habitatmanagers` (
 -- Records of habitatmanagers
 -- ----------------------------
 INSERT INTO `habitatmanagers` VALUES ('Amphibians', '111111111', '2013-12-01');
-INSERT INTO `habitatmanagers` VALUES ('Arthropod', '111111111', '2013-12-01');
-INSERT INTO `habitatmanagers` VALUES ('Bird', '111111111', '2013-12-01');
+INSERT INTO `habitatmanagers` VALUES ('Arthropod', '444444444', '2013-12-05');
+INSERT INTO `habitatmanagers` VALUES ('Bird', '123123123', '2013-12-05');
 INSERT INTO `habitatmanagers` VALUES ('Mammal', '222222222', '2013-12-01');
 INSERT INTO `habitatmanagers` VALUES ('Reptile', '333333333', '2013-12-01');
 
@@ -269,7 +269,7 @@ CREATE TABLE `members` (
 -- Records of members
 -- ----------------------------
 INSERT INTO `members` VALUES ('1', 'Reptile', 'Michael', 'Harkins', 'here', '2013-05-14', '2013-11-04', '2013-11-16', '1');
-INSERT INTO `members` VALUES ('2', 'Mammal', 'Michael', 'Harkins', 'here', '2013-11-27', '2013-10-29', '2013-11-29', '1');
+INSERT INTO `members` VALUES ('2', 'Mammal', 'Michael', 'Harkins', 'here', '2013-11-27', '2013-10-29', '2013-11-29', '2');
 
 -- ----------------------------
 -- Table structure for membervisits
@@ -289,6 +289,7 @@ CREATE TABLE `membervisits` (
 -- Records of membervisits
 -- ----------------------------
 INSERT INTO `membervisits` VALUES ('2', 'Mammal', '2013-11-29');
+INSERT INTO `membervisits` VALUES ('2', 'Mammal', '2013-12-05');
 INSERT INTO `membervisits` VALUES ('1', 'Reptile', '2013-11-29');
 
 -- ----------------------------
@@ -307,6 +308,7 @@ CREATE TABLE `nonmembervisits` (
 -- ----------------------------
 -- Records of nonmembervisits
 -- ----------------------------
+INSERT INTO `nonmembervisits` VALUES ('2', 'Mammal', '2013-12-05');
 INSERT INTO `nonmembervisits` VALUES ('1', 'Reptile', '2013-11-29');
 
 -- ----------------------------
@@ -368,7 +370,7 @@ CREATE TABLE `pens` (
 -- ----------------------------
 INSERT INTO `pens` VALUES ('1', 'Crocs', 'Reptile', 'Rainy', 'Mice', '4', '2013-11-04');
 INSERT INTO `pens` VALUES ('2', 'Turtles', 'Reptile', 'Cold', 'Plants', '12', '2013-11-13');
-INSERT INTO `pens` VALUES ('3', 'Whales', 'Mammal', 'Water', 'Small Stuff', '20', '2013-11-15');
+INSERT INTO `pens` VALUES ('3', 'Whales', 'Mammal', 'Water', 'Plankton', '20', '2013-11-15');
 INSERT INTO `pens` VALUES ('4', 'Elephants', 'Mammal', 'Grassy', 'Food', '9', '2013-11-11');
 INSERT INTO `pens` VALUES ('5', 'Bear', 'Mammal', 'Grass', 'Food', '5', '2013-11-11');
 INSERT INTO `pens` VALUES ('6', 'Bat', 'Mammal', 'Wet', 'Food', '9', '2013-11-11');
@@ -380,8 +382,8 @@ INSERT INTO `pens` VALUES ('11', 'Hawk', 'Bird', 'Warm', 'Food', '18', '2013-11-
 INSERT INTO `pens` VALUES ('12', 'Owl', 'Bird', 'Warm', 'Food', '10', '2013-11-11');
 INSERT INTO `pens` VALUES ('13', 'Butterfly', 'Arthropod', 'Warm', 'Worm', '15', '2013-11-11');
 INSERT INTO `pens` VALUES ('14', 'Scorpion', 'Arthropod', 'Warm', 'Insects', '8', '2013-11-11');
-INSERT INTO `pens` VALUES ('15', 'Crab', 'Arthropod', 'Warm', 'Stuff', '9', '2013-11-11');
-INSERT INTO `pens` VALUES ('16', 'Lizard', 'Reptile', 'Wet', 'Things', '9', '2013-11-11');
+INSERT INTO `pens` VALUES ('15', 'Crab', 'Arthropod', 'Warm', 'Seaweed', '9', '2013-11-11');
+INSERT INTO `pens` VALUES ('16', 'Lizard', 'Reptile', 'Wet', 'Insects', '9', '2013-11-11');
 
 -- ----------------------------
 -- Table structure for timesvisited
@@ -400,7 +402,52 @@ CREATE TABLE `timesvisited` (
 -- Records of timesvisited
 -- ----------------------------
 INSERT INTO `timesvisited` VALUES ('Mammal', '2013-11-29', '0', '1');
+INSERT INTO `timesvisited` VALUES ('Mammal', '2013-12-05', '1', '1');
 INSERT INTO `timesvisited` VALUES ('Reptile', '2013-11-29', '0', '1');
+DROP TRIGGER IF EXISTS `oneHabitat`;
+DELIMITER ;;
+CREATE TRIGGER `oneHabitat` AFTER INSERT ON `habitatmanagers` FOR EACH ROW begin
+declare test int;
+set test = (select COUNT( ssn) from  habitatmanagers where ssn=new.ssn);
+if(test > 1) then
+signal sqlstate '02134' set message_text = 'Manager can only manage one habitat';
+end if;
+END
+;;
+DELIMITER ;
+DROP TRIGGER IF EXISTS `oneHabitatUpdate`;
+DELIMITER ;;
+CREATE TRIGGER `oneHabitatUpdate` AFTER UPDATE ON `habitatmanagers` FOR EACH ROW begin
+declare test int;
+set test = (select COUNT( ssn) from  habitatmanagers where ssn=new.ssn);
+if(test > 1) then
+signal sqlstate '02134' set message_text = 'Manager can only manage one habitat';
+end if;
+END
+;;
+DELIMITER ;
+DROP TRIGGER IF EXISTS `animalName`;
+DELIMITER ;;
+CREATE TRIGGER `animalName` AFTER INSERT ON `livesin` FOR EACH ROW begin
+declare test int;
+set test = (select COUNT( DISTINCT name) from animals where species = new.species and name = new.name);
+if(test < 1) then
+signal sqlstate '02134' set message_text = 'Name must but from the species the animal is apart of ';
+end if;
+END
+;;
+DELIMITER ;
+DROP TRIGGER IF EXISTS `animalNameUpdate`;
+DELIMITER ;;
+CREATE TRIGGER `animalNameUpdate` AFTER UPDATE ON `livesin` FOR EACH ROW begin
+declare test int;
+set test = (select COUNT( DISTINCT name) from animals where species = new.species and name = new.name);
+if(test < 1) then
+signal sqlstate '02134' set message_text = 'Name must but from the species the animal is apart of ';
+end if;
+END
+;;
+DELIMITER ;
 DROP TRIGGER IF EXISTS `incrementMemberVisits`;
 DELIMITER ;;
 CREATE TRIGGER `incrementMemberVisits` BEFORE INSERT ON `membervisits` FOR EACH ROW UPDATE Members
@@ -425,6 +472,17 @@ DELIMITER ;
 DROP TRIGGER IF EXISTS `pensOneHabitat`;
 DELIMITER ;;
 CREATE TRIGGER `pensOneHabitat` AFTER INSERT ON `penkeepers` FOR EACH ROW begin
+declare test int;
+set test = (select COUNT( DISTINCT habitatname) from penkeepers LEFT JOIN pens on (penkeepers.penid = pens.penid) where new.ssn = penkeepers.ssn);
+if(test > 1) then
+signal sqlstate '02134' set message_text = 'cannot have pens for same penkeeper in different habitats';
+end if;
+END
+;;
+DELIMITER ;
+DROP TRIGGER IF EXISTS `pensOneHabitatUpdate`;
+DELIMITER ;;
+CREATE TRIGGER `pensOneHabitatUpdate` AFTER UPDATE ON `penkeepers` FOR EACH ROW begin
 declare test int;
 set test = (select COUNT( DISTINCT habitatname) from penkeepers LEFT JOIN pens on (penkeepers.penid = pens.penid) where new.ssn = penkeepers.ssn);
 if(test > 1) then
